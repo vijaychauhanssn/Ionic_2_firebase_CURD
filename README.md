@@ -45,48 +45,6 @@ From now on, whenever you are going to type something in the terminal it’s goi
 The npm packages that come with the project
 When you use the Ionic CLI to create a new project, it’s going to do a lot of things for you, one of those things is making sure your project has the necessary npm packages/modules it needs.
 
-Your package.json file should look like this:
-
-{
-  "name": "af2-lists",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
-  "private": true,
-  "scripts": {
-    "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
-  },
-  "dependencies": {
-    "@angular/common": "5.0.0",
-    "@angular/compiler": "5.0.0",
-    "@angular/compiler-cli": "5.0.0",
-    "@angular/core": "5.0.0",
-    "@angular/forms": "5.0.0",
-    "@angular/http": "5.0.0",
-    "@angular/platform-browser": "5.0.0",
-    "@angular/platform-browser-dynamic": "5.0.0",
-    "@ionic-native/core": "4.3.3",
-    "@ionic-native/splash-screen": "4.3.3",
-    "@ionic-native/status-bar": "4.3.3",
-    "@ionic/storage": "2.1.3",
-    "ionic-angular": "3.9.2",
-    "ionicons": "3.0.0",
-    "rxjs": "5.5.2",
-    "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18"
-  },
-  "devDependencies": {
-    "@ionic/app-scripts": "3.1.0",
-    "typescript": "2.4.2"
-  },
-  "description": "An Ionic project"
-}
-Install the packages you’ll need
-After you make sure that the Ionic CLI started/installed everything correctly, it’s time to install the packages we’ll need for this app.
 
 We need to install AngularFire2, open your terminal (you should already be in the project folder) and install it:
 
@@ -110,7 +68,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 export const firebaseConfig = {
   apiKey: "AIzaSyDnAX0CQbbsMYuOTJ66ox_F0GwzPM4XPXY",
   authDomain: "angularfire2-list-example.firebaseapp.com",
-  databaseURL: "https://angularfire2-list-example.firebaseio.com",
+  databaseURL: "https://vijaychauhanssn-53bc4.firebaseapp.com/,
   storageBucket: "",
   messagingSenderId: "609067141823"
 };
@@ -151,12 +109,13 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 export const firebaseConfig = {
   apiKey: "AIzaSyDnAX0CQbbsMYuOTJ66ox_F0GwzPM4XPXY",
   authDomain: "angularfire2-list-example.firebaseapp.com",
-  databaseURL: "https://angularfire2-list-example.firebaseio.com",
+  databaseURL: "https://vijaychauhanssn-53bc4.firebaseapp.com/,
   storageBucket: "",
   messagingSenderId: "609067141823"
 };
  
 @NgModule({
+
   declarations: [
     MyApp,
     HomePage
@@ -284,6 +243,7 @@ constructor(public navCtrl: NavController, public alertCtrl: AlertController,
 We can now create the function, remember how we named it in the home.html file?
 
 addSong(){
+
   let prompt = this.alertCtrl.create({
     title: 'Song Name',
     message: "Enter a name for this new song you're so keen on adding",
@@ -304,7 +264,6 @@ addSong(){
         text: 'Save',
         handler: data => {
           const newSongRef = this.songs.push({});
- 
           newSongRef.set({
             id: newSongRef.key
             title: data.title
@@ -321,7 +280,6 @@ I hope that code isn’t weird or anything, it’s just the basic alert code, pa
   text: 'Save',
   handler: data => {
     const newSongRef = this.songs.push({});
- 
     newSongRef.set({
       id: newSongRef.key
       title: data.title
@@ -351,6 +309,7 @@ constructor(public navCtrl: NavController, public alertCtrl: AlertController,
 Now we want to bind it to the showOptions() function we created on the home.html file:
 
 showOptions(songId, songTitle) {
+
   let actionSheet = this.actionSheetCtrl.create({
     title: 'What do you want to do?',
     buttons: [
@@ -405,6 +364,7 @@ The next part of the action sheet code:
 Will take the song’s ID and title and pass it to an updateSong() function, we’ll create it right now:
 
 updateSong(songId, songTitle){
+
   let prompt = this.alertCtrl.create({
     title: 'Song Name',
     message: "Update the name for this song",
